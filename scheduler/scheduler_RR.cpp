@@ -8,6 +8,14 @@
  *      pre-emptive
  */
 
-//TODO fill in content
+#include "../includes/scheduler_RR.h"
 
+using namespace std;
 
+//this is a preemptive scheduler,set the preemptive member variable to true
+//when calling the base class
+Scheduler_RR::Scheduler_RR(queue<PCB> &queue, int time_slice):Scheduler(queue,true,time_slice){
+}
+
+Scheduler_RR::~Scheduler_RR():~Scheduler(){
+}

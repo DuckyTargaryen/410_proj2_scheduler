@@ -7,7 +7,13 @@
  *      implements FIFO scheduling algorithm
  *      not pre-emptive
  */
+#include "../includes/scheduler_FIFO.h"
 
-//TODO fill in content
+//this is a non - preemptive scheduler, set the preemptive member variable to false
+//when calling the base class
+Scheduler_FIFO::Scheduler_FIFO(std::queue<PCB> &queue):Scheduler(queue,false,UNINITIALIZED){;
+}
 
+Scheduler_FIFO::~Scheduler_FIFO():~Scheduler(){
+}
 
