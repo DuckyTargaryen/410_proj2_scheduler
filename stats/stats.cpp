@@ -14,11 +14,6 @@ Stats::Stats(std::vector<PCB> &finished_vector){
 	av_response_time = UNINITIALIZED;
 }
 
-Stats::~Stats(){
-	if(vec)
-		delete[] vec;
-}
-
 //loops thru vec, prints 1 line for each process using the following format
 //Process 1 Required CPU time:2  arrived:0 started:0 finished:2
 //if there are 10 processes in vector, should print 10 lines
