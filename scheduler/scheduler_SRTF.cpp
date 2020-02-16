@@ -15,6 +15,7 @@
 Scheduler_SRTF::Scheduler_SRTF(std::queue<PCB> &queue):Scheduler(queue,true,UNINITIALIZED){
 }
 
+//Calls the base class destructor to dereference ready_q
 Scheduler_SRTF::~Scheduler_SRTF():~Scheduler(){
 }
 

@@ -14,6 +14,7 @@
 Scheduler_FIFO::Scheduler_FIFO(std::queue<PCB> &queue):Scheduler(queue,false,UNINITIALIZED){;
 }
 
+//Destructor: calls the base class destructor to dereference ready_q
 Scheduler_FIFO::~Scheduler_FIFO():~Scheduler(){
 }
 
