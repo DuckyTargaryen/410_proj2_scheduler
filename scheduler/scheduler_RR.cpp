@@ -12,11 +12,3 @@
 
 using namespace std;
 
-//this is a preemptive scheduler,set the preemptive member variable to true
-//when calling the base class
-Scheduler_RR::Scheduler_RR(queue<PCB> &queue, int time_slice):Scheduler(queue,true,time_slice){
-}
-
-//Calls the base class destructor to dereference the ready_q pointer
-Scheduler_RR::~Scheduler_RR():~Scheduler(){
-}

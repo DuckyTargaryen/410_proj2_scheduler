@@ -7,14 +7,6 @@
 
 #include "../includes/scheduler.h"
 
-Scheduler::Scheduler(std::queue<PCB> &queue, bool preemptive, int time_slice):ready_q(&queue), preemptive(preemptive), time_slice(time_slice){
-}
-
-Scheduler::~Scheduler(){
-	if(ready_q)
-		delete[] ready_q;
-}
-
 //add a process, either a new one or one that
 //had been running on the CPU and has been preempted
 void Scheduler::add(PCB p){

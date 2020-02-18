@@ -8,18 +8,15 @@
  *     pre-emptive
  */
 
+#include <algorithm>
 #include "../includes/scheduler_SRTF.h"
 
-//this is a  preemptive scheduler, so set the preemptive member variable to true
-//when calling the base class
-Scheduler_SRTF::Scheduler_SRTF(std::queue<PCB> &queue):Scheduler(queue,true,UNINITIALIZED){
-}
 
-//Calls the base class destructor to dereference ready_q
-Scheduler_SRTF::~Scheduler_SRTF():~Scheduler(){
+bool compareCpuTime(PCB a, PCB b){
+	return a.remaining_cpu_time < b.remaining_cpu_time;
 }
 
 //SRTF-preemptive - sort ready_q by remaining_cpu_time whenever add(PCB p) or time_to_switch_processes is called
 void Scheduler_SRTF::sort(){
-
+	std::sort(ready_q[0].front(), ready_q[0].back(), compareCpuTime);
 }
