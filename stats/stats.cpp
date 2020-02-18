@@ -5,6 +5,7 @@
  *      Author: keith
  */
 
+#include <string.h>
 #include "../includes/stats.h"
 
 Stats::Stats(std::vector<PCB> &finished_vector){
@@ -18,7 +19,9 @@ Stats::Stats(std::vector<PCB> &finished_vector){
 //Process 1 Required CPU time:2  arrived:0 started:0 finished:2
 //if there are 10 processes in vector, should print 10 lines
 void Stats::showAllProcessInfo(){
-
+	for(int i = 0; i < vec->size(); i++){
+		std::cout << vec[0][i].process_number << std::endl;
+	}
 }
 
 //after a process is placed in the ready_q, how long does
@@ -48,7 +51,7 @@ float Stats::get_av_wait_time(){
 //does the work (only needs to run once)
 void Stats::calcStats(){
 	int totalNumProcess = 0;
-	for(int i = 0; i < vec[0].size(); i++){
+	for(int i = 0; i < vec->size(); i++){
 		av_response_time += vec[0][i].start_time - vec[0][i].arrival_time;
 		av_turnaround_time += vec[0][i].finish_time - vec[0][i].arrival_time;
 		av_wait_time += vec[0][i].finish_time - vec[0][i].arrival_time - vec[0][i].remaining_cpu_time;
