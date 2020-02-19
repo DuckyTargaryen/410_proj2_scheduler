@@ -15,19 +15,20 @@ using namespace std;
 
 bool Scheduler_RR::time_to_switch_processes(int tick_count, PCB &p){
 	if(preemptive){
-		p.remaining_cpu_time--;
+		p.remaining_cpu_time = p.remaining_cpu_time - 1;
 		if(p.remaining_cpu_time < 0){
 			p.remaining_cpu_time = 0;
 		}
-		ready_q->pop();
-		return tick_count >= time_slice;
+		//ready_q->pop();
+		//std::cout << p.remaining_cpu_time << std::endl;
+		return (tick_count % time_slice) == 0;
 	}
 	else{
 		p.remaining_cpu_time--;
 		if(p.remaining_cpu_time < 0){
 			p.remaining_cpu_time = 0;
 		}
-		ready_q->pop();
+		//ready_q->pop();
 		return p.remaining_cpu_time == 0;
 	}
 }

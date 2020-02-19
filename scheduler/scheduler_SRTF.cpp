@@ -25,7 +25,7 @@ bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
 		}
 		//ready_q->pop();
 		sort();
-		return tick_count >= time_slice;
+		return (tick_count % time_slice) == 0;
 	}
 	else{
 		p.remaining_cpu_time--;

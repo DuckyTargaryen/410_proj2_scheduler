@@ -17,7 +17,7 @@ bool Scheduler_FIFO::time_to_switch_processes(int tick_count, PCB &p){
 			p.remaining_cpu_time = 0;
 		}
 		//ready_q->pop();
-		return tick_count >= time_slice;
+		return (tick_count % time_slice) == 0;
 	}
 	else{
 		p.remaining_cpu_time--;

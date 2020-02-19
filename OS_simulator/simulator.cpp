@@ -51,6 +51,7 @@ void simulate(const char* pSourceFile, Scheduler &s,std::vector<PCB> &finished_v
 
 					//is job finished?
 					if (removed_job.remaining_cpu_time == 0){
+						std::cout << "This is over" << std::endl;
 						//job is finished. Add it to the completed vector
 						//then record finish time (for metric calculations)
 						removed_job.finish_time = tick_count;
@@ -66,7 +67,6 @@ void simulate(const char* pSourceFile, Scheduler &s,std::vector<PCB> &finished_v
 			if(!scheduler->isEmpty()){
 				//Yep, run one
 				currentJob = scheduler->getNext();
-
 				//you only want to set start_time the FIRST time a process is loaded
 				//not every time its reloaded when running a pre-emptive scheduler
 				if(currentJob.start_time == UNINITIALIZED)

@@ -18,7 +18,7 @@ const int				DEFAULT_TIME_SLICE			= 2;
 
 //default files
 const char*	const 	SOURCE_FILE_1 = "./data/testdata1.txt";
-const char* const	SOURCE_FILE_2 = "./data/testdata1.txt";
+const char* const	SOURCE_FILE_2 = "./data/testdata2.txt";
 
 #define _SHOWLOG
 #ifdef _SHOWLOG

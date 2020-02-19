@@ -16,7 +16,9 @@ void Scheduler::add(PCB p){
 
 //get next process
 PCB Scheduler::getNext(){
-	return ready_q->front();
+	PCB nextProcess = ready_q->front();
+	ready_q->pop();
+	return nextProcess;
 }
 
 //returns true if there are no  jobs in the readyQ
@@ -38,7 +40,7 @@ bool Scheduler::time_to_switch_processes(int tick_count, PCB &p){
 			p.remaining_cpu_time = 0;
 		}
 		//ready_q->pop();
-		return tick_count >= time_slice;
+		return (tick_count % time_slice) == 0;
 	}
 	else{
 		p.remaining_cpu_time--;
