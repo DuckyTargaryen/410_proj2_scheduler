@@ -19,12 +19,22 @@ bool compareCpuTime(PCB a, PCB b){
 
 bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p){
 	if(preemptive){
+		p.remaining_cpu_time--;
+		if(p.remaining_cpu_time < 0){
+			p.remaining_cpu_time = 0;
+		}
+		//ready_q->pop();
 		sort();
 		return tick_count >= time_slice;
 	}
 	else{
+		p.remaining_cpu_time--;
+		if(p.remaining_cpu_time < 0){
+			p.remaining_cpu_time = 0;
+		}
+		//ready_q->pop();
 		sort();
-		return tick_count >= p.finish_time;
+		return p.remaining_cpu_time == 0;
 	}
 }
 

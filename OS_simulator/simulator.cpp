@@ -44,7 +44,6 @@ void simulate(const char* pSourceFile, Scheduler &s,std::vector<PCB> &finished_v
 
 		//see if its time to switch
 		if (scheduler->time_to_switch_processes(tick_count, currentJob)){
-
 			//if current job is valid then remove it
 			if (dispatch.isValidJobOnCPU()){
 					//pull current job off CPU
