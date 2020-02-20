@@ -34,7 +34,7 @@ bool Scheduler::isEmpty(){
 //true - switch processes
 //false - do not switch
 bool Scheduler::time_to_switch_processes(int tick_count, PCB &p){
-	if(preemptive){
+	/*if(preemptive){
 		p.remaining_cpu_time = p.remaining_cpu_time - 1;
 		if(p.remaining_cpu_time < 0){
 			p.remaining_cpu_time = 0;
@@ -49,7 +49,7 @@ bool Scheduler::time_to_switch_processes(int tick_count, PCB &p){
 		}
 		//ready_q->pop();
 		return p.remaining_cpu_time == 0;
-	}
+	}*/
 }
 
 // sort  ready_q based on the scheduler algorithm used whenever add(PCB p) is called

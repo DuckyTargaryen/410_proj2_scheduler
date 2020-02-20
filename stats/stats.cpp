@@ -64,16 +64,10 @@ void Stats::calcStats(){
 	for(int i = 0; i < vec->size(); i++){
 		av_response_time += vec[0][i].start_time - vec[0][i].arrival_time;
 		av_turnaround_time += vec[0][i].finish_time - vec[0][i].arrival_time;
-		av_wait_time += vec[0][i].finish_time - vec[0][i].arrival_time - vec[0][i].remaining_cpu_time;
+		av_wait_time += (vec[0][i].finish_time - vec[0][i].arrival_time) - vec[0][i].required_cpu_time;
 		totalNumProcess = totalNumProcess + 1;
 	}
 	av_response_time = av_response_time/totalNumProcess;
 	av_turnaround_time = av_turnaround_time/totalNumProcess;
 	av_wait_time = av_wait_time/totalNumProcess;
-	std::cout << "av_response_time: ";
-	std::cout << av_response_time << std::endl;
-	std::cout << "av_turnaround_time: ";
-	std::cout << av_turnaround_time << std::endl;
-	std::cout << "av_wait_time: ";
-	std::cout << av_wait_time << std::endl;
 }
