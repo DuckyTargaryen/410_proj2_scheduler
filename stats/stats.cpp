@@ -10,9 +10,10 @@
 
 Stats::Stats(std::vector<PCB> &finished_vector){
 	vec = &finished_vector;
-	av_wait_time = UNINITIALIZED;
-	av_turnaround_time = UNINITIALIZED;
-	av_response_time = UNINITIALIZED;
+	av_wait_time = 0;
+	av_turnaround_time = 0;
+	av_response_time = 0;
+	calcStats();
 }
 
 //loops thru vec, prints 1 line for each process using the following format
@@ -20,7 +21,16 @@ Stats::Stats(std::vector<PCB> &finished_vector){
 //if there are 10 processes in vector, should print 10 lines
 void Stats::showAllProcessInfo(){
 	for(int i = 0; i < vec->size(); i++){
-		std::cout << vec[0][i].process_number << std::endl;
+		std::cout << "Process ";
+		std::cout << vec[0][i].process_number;
+		std::cout << " Required CPU time:";
+		std::cout << vec[0][i].required_cpu_time;
+		std::cout << " arrived:";
+		std::cout << vec[0][i].arrival_time;
+		std::cout << " started:";
+		std::cout << vec[0][i].start_time;
+		std::cout << " finished:";
+		std::cout << vec[0][i].finish_time << std::endl;
 	}
 }
 
@@ -55,9 +65,15 @@ void Stats::calcStats(){
 		av_response_time += vec[0][i].start_time - vec[0][i].arrival_time;
 		av_turnaround_time += vec[0][i].finish_time - vec[0][i].arrival_time;
 		av_wait_time += vec[0][i].finish_time - vec[0][i].arrival_time - vec[0][i].remaining_cpu_time;
-		totalNumProcess++;
+		totalNumProcess = totalNumProcess + 1;
 	}
 	av_response_time = av_response_time/totalNumProcess;
 	av_turnaround_time = av_turnaround_time/totalNumProcess;
 	av_wait_time = av_wait_time/totalNumProcess;
+	std::cout << "av_response_time: ";
+	std::cout << av_response_time << std::endl;
+	std::cout << "av_turnaround_time: ";
+	std::cout << av_turnaround_time << std::endl;
+	std::cout << "av_wait_time: ";
+	std::cout << av_wait_time << std::endl;
 }

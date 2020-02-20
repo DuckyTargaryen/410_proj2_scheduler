@@ -21,7 +21,7 @@ void Dispatcher::put_on_CPU(PCB &process){
 
 //is CPU idle or working
 bool Dispatcher::isValidJobOnCPU(){
-	PCB currJob = cpu->get_process_off_core();
+	PCB currJob = cpu->get_COPY_of_Current_Process();
 	if(currJob.isEmpty()){
 		is_valid_job_on_cpu = false;
 	}

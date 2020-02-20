@@ -51,7 +51,6 @@ void simulate(const char* pSourceFile, Scheduler &s,std::vector<PCB> &finished_v
 
 					//is job finished?
 					if (removed_job.remaining_cpu_time == 0){
-						std::cout << "This is over" << std::endl;
 						//job is finished. Add it to the completed vector
 						//then record finish time (for metric calculations)
 						removed_job.finish_time = tick_count;

@@ -12,7 +12,7 @@
 
 bool Scheduler_FIFO::time_to_switch_processes(int tick_count, PCB &p){
 	if(preemptive){
-		p.remaining_cpu_time--;
+		p.remaining_cpu_time = p.remaining_cpu_time - 1;
 		if(p.remaining_cpu_time < 0){
 			p.remaining_cpu_time = 0;
 		}
@@ -20,12 +20,12 @@ bool Scheduler_FIFO::time_to_switch_processes(int tick_count, PCB &p){
 		return (tick_count % time_slice) == 0;
 	}
 	else{
-		p.remaining_cpu_time--;
+		p.remaining_cpu_time = p.remaining_cpu_time - 1;
 		if(p.remaining_cpu_time < 0){
 			p.remaining_cpu_time = 0;
 		}
 		//ready_q->pop();
-		return p.remaining_cpu_time < 0;
+		return p.remaining_cpu_time == 0;
 	}
 }
 
