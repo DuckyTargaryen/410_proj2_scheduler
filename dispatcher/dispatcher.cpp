@@ -7,19 +7,28 @@
 
 #include "../includes/dispatcher.h"
 
-//pull current process (if any) off CPU and return it
-//if nothing on CPU returns an uninitialized PCB
+/**
+ * Pulls a process off the CPU and returns it.
+ * If nothing is on the CPU, it returns an uninitialized PCB.
+ * @return PCB - The process on the CPU or the uninitialized process.
+ */
 PCB Dispatcher::get_from_CPU(){
 	PCB currJob = cpu->get_process_off_core();
 	return currJob;
 }
 
-//place the current process on the CPU for execution
+/**
+ * Puts a process on the CPU.
+ * @param process - The process being placed on the CPU.
+ */
 void Dispatcher::put_on_CPU(PCB &process){
 	cpu->put_process_on_core(process);
 }
 
-//is CPU idle or working
+/**
+ * Determines if the CPU is idle or is currently running a process.
+ * @return bool - Whether the CPU is running a process or not.
+ */
 bool Dispatcher::isValidJobOnCPU(){
 	PCB currJob = cpu->get_COPY_of_Current_Process();
 	if(currJob.isEmpty()){

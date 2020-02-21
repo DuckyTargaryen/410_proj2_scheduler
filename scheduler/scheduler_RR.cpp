@@ -10,27 +10,23 @@
 
 #include "../includes/scheduler_RR.h"
 
-using namespace std;
-
-
+/**
+ * Determines whether it is time to switch processes.
+ * @param tick_count - Number of CPU ticks.
+ * @param p - Process on the CPU.
+ * @return bool - Whether or not a process is complete or its time slice is finished.
+ */
 bool Scheduler_RR::time_to_switch_processes(int tick_count, PCB &p){
-	//p.remaining_cpu_time = p.remaining_cpu_time - 1;
 	if(p.remaining_cpu_time <= 0){
 		p.remaining_cpu_time = 0;
 		return p.remaining_cpu_time == 0;
 	}
-	//ready_q->pop();
-	//std::cout << p.remaining_cpu_time << std::endl;
 	return ((p.required_cpu_time - p.remaining_cpu_time) % time_slice) == 0;
-	/*else{
-		p.remaining_cpu_time--;
-		if(p.remaining_cpu_time < 0){
-			p.remaining_cpu_time = 0;
-		}
-		//ready_q->pop();
-		return p.remaining_cpu_time == 0;
-	}*/
 }
 
+/**
+ * Sorts the ready_q based on the algorithm used.
+ * The RR algorithm does not sort the ready_q.
+ */
 void Scheduler_RR::sort(){
 }
